@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>报警记录 - VS振弦渗压计采集系统</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🌊 VS振弦渗压计采集系统</div>
+  <ul class="nav-links">
+    <li><a href="/">实时数据</a></li>
+    <li><a href="/history">历史曲线</a></li>
+    <li><a href="/devices">设备管理</a></li>
+    <li><a href="/alarms" class="active">报警记录</a></li>
+  </ul>
+</nav>
+<main class="container">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h2 class="card-title" style="margin:0">报警记录</h2>
+      <label style="cursor:pointer">
+        <input type="checkbox" id="only-active" onchange="loadAlarms()"/> 仅显示未消除
+      </label>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>时间</th><th>设备</th><th>通道</th><th>类型</th><th>水头(m)</th><th>阈值(m)</th><th>描述</th><th>状态</th></tr>
+      </thead>
+      <tbody id="alarms-body">
+        <tr><td colspan="8" class="loading">加载中...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<script src="/static/js/alarms.js"></script>
+</body>
+</html>
