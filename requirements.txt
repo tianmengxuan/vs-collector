@@ -1,0 +1,6 @@
+flask>=2.3.0
+Werkzeug>=2.3.0
+
+# 打包EXE需要
+pyinstaller>=5.13.0
+pillow>=10.0.0    # 用于生成程序图标（可选）
