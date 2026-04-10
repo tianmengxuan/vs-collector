@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>VS振弦渗压计采集系统</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🌊 VS振弦渗压计采集系统</div>
+  <ul class="nav-links">
+    <li><a href="/" class="active">实时数据</a></li>
+    <li><a href="/history">历史曲线</a></li>
+    <li><a href="/devices">设备管理</a></li>
+    <li><a href="/alarms">报警记录</a></li>
+  </ul>
+  <div class="nav-status">
+    <span id="server-time">--</span>
+    <span class="status-dot" id="conn-status"></span>
+  </div>
+</nav>
+
+<main class="container">
+  <!-- 统计卡片 -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card"><div class="stat-val" id="s-devices">--</div><div class="stat-label">在线设备</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-records">--</div><div class="stat-label">总记录数</div></div>
+    <div class="stat-card alarm-card"><div class="stat-val" id="s-alarms">--</div><div class="stat-label">活跃报警</div></div>
+    <div class="stat-card"><div class="stat-val" id="s-lastdata">--</div><div class="stat-label">最后数据</div></div>
+  </div>
+
+  <!-- 设备数据卡片区域 -->
+  <div id="device-cards"></div>
+  
+  <div class="no-data" id="no-data" style="display:none">
+    <p>⏳ 等待设备连接中...</p>
+    <p>请确认设备TCP参数已设置为本服务器地址</p>
+  </div>
+</main>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>
