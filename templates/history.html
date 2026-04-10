@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>历史曲线 - VS振弦渗压计采集系统</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🌊 VS振弦渗压计采集系统</div>
+  <ul class="nav-links">
+    <li><a href="/">实时数据</a></li>
+    <li><a href="/history" class="active">历史曲线</a></li>
+    <li><a href="/devices">设备管理</a></li>
+    <li><a href="/alarms">报警记录</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+  <div class="query-bar card">
+    <div class="form-row">
+      <label>设备 UDID:</label>
+      <input type="text" id="q-udid" placeholder="请输入设备UDID"/>
+    </div>
+    <div class="form-row">
+      <label>通道号:</label>
+      <input type="number" id="q-ch" value="1" min="1" max="32" style="width:80px"/>
+    </div>
+    <div class="form-row">
+      <label>时间范围:</label>
+      <select id="q-days">
+        <option value="1">最近1天</option>
+        <option value="3">最近3天</option>
+        <option value="7" selected>最近7天</option>
+        <option value="30">最近30天</option>
+        <option value="90">最近90天</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="loadHistory()">查询</button>
+    <button class="btn btn-outline" onclick="exportCSV()">导出CSV</button>
+  </div>
+
+  <div class="card">
+    <div id="chart-title" class="chart-title">--</div>
+    <div id="chart-waterhead" style="height:320px;"></div>
+  </div>
+  
+  <div class="card">
+    <div class="chart-title">频率曲线 (Hz)</div>
+    <div id="chart-freq" style="height:250px;"></div>
+  </div>
+
+  <div class="card">
+    <div class="chart-title">渗压曲线 (kPa)</div>
+    <div id="chart-pressure" style="height:250px;"></div>
+  </div>
+</main>
+
+<script src="/static/js/history.js"></script>
+</body>
+</html>
