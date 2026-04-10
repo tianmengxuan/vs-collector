@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>设备管理 - VS振弦渗压计采集系统</title>
+  <link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🌊 VS振弦渗压计采集系统</div>
+  <ul class="nav-links">
+    <li><a href="/">实时数据</a></li>
+    <li><a href="/history">历史曲线</a></li>
+    <li><a href="/devices" class="active">设备管理</a></li>
+    <li><a href="/alarms">报警记录</a></li>
+  </ul>
+</nav>
+<main class="container">
+  <div class="card">
+    <h2 class="card-title">设备列表</h2>
+    <table class="data-table" id="devices-table">
+      <thead>
+        <tr>
+          <th>UDID</th><th>名称</th><th>位置</th><th>最后通信</th><th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="devices-body">
+        <tr><td colspan="5" class="loading">加载中...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- 编辑弹窗 -->
+<div id="edit-modal" class="modal" style="display:none">
+  <div class="modal-box">
+    <h3>编辑设备信息</h3>
+    <input type="hidden" id="edit-udid"/>
+    <div class="form-row">
+      <label>设备名称:</label>
+      <input type="text" id="edit-name" placeholder="如: 坝体1号渗压仪"/>
+    </div>
+    <div class="form-row">
+      <label>安装位置:</label>
+      <input type="text" id="edit-location" placeholder="如: 1号坝0+200断面"/>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-primary" onclick="saveDevice()">保存</button>
+      <button class="btn btn-outline" onclick="closeModal()">取消</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/devices.js"></script>
+</body>
+</html>
