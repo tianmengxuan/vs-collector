@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  vs-collector:
+    build: .
+    container_name: vs-collector
+    restart: unless-stopped
+    ports:
+      - "8866:8866"   # TCP数据接收端口 (设备连接此端口)
+      - "5000:5000"   # Web界面端口
+    volumes:
+      - ./data:/app/data       # 数据库持久化
+      - ./logs:/app/logs       # 日志持久化
+    environment:
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
